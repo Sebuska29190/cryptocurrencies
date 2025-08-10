@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 const cryptoNewsHeaders = {
-  'X-RapidAPI-Key': rapidApiKey,
-  'X-RapidAPI-Host': 'crypto-news16.p.rapidapi.com', // Poprawny Host z Twojego zrzutu ekranu
+  'X-RapidAPI-Host': 'crypto-news16.p.rapidapi.com',
 };
 
-const baseUrl = '/.netlify/functions/news-proxy'; // Poprawny bazowy URL
+const baseUrl = '/.netlify/functions/news-proxy';
 
 const createRequest = (url: string) => ({ url, headers: cryptoNewsHeaders });
 
@@ -13,8 +13,7 @@ export const cryptoNewsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getCryptoNews: builder.query({
-      // Endpoint dla tego konkretnego API to po prostu /news
-      query: () => createRequest(`/news`),
+      query: () => createRequest(''),
     }),
   }),
 });
